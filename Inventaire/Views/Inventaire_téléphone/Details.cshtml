@@ -1,0 +1,106 @@
+﻿@model Inventaire.Models.Inventaire_téléphone
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Inventaire_téléphone</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Référence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Référence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fabriquant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fabriquant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Processeur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Processeur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Taille)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Taille)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stockage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stockage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type_écran)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type_écran)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RAM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RAM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Connectique)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Connectique)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantité)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantité)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Localisation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Localisation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

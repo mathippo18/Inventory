@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Inventaire.Models.Inventaire_Produit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "Inventaire_Produit", FormMethod.Get))
+{
+    <p>
+        Type: @Html.DropDownList("Types", "All")
+        Fabriquant: @Html.DropDownList("Fab", "All")
+        Référence: @Html.TextBox("SearchString")
+        <input type="submit" value="Filter" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Référence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fabriquant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantité)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Localisation)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Référence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fabriquant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantité)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localisation)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

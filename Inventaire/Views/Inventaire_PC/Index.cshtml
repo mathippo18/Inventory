@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Inventaire.Models.Inventaire_PC>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "Inventaire_PC", FormMethod.Get))
+{
+    <p>
+        Processeur: @Html.DropDownList("Processeur", "All")
+        Fabriquant: @Html.DropDownList("Fab", "All")
+        OS: @Html.DropDownList("OS", "All")
+        Carte Graphique: @Html.DropDownList("Carte_Graphique", "All")
+        Taille: @Html.DropDownList("Taille", "All")
+        Stockage: @Html.DropDownList("Stockage", "All")
+        Type écran: @Html.DropDownList("Type_écran", "All")
+        RAM: @Html.DropDownList("RAM", "All")
+        Connectique: @Html.DropDownList("Connectique", "All")
+        Référence: @Html.TextBox("SearchString")
+        <input type="submit" value="Filter" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Référence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fabriquant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Processeur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taille)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stockage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type_écran)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RAM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Carte_graphique)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Connectique)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantité)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Localisation)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Référence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fabriquant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Processeur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Taille)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stockage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type_écran)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RAM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Carte_graphique)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Connectique)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantité)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localisation)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

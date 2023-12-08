@@ -1,0 +1,29 @@
+﻿@model Inventaire.Models.IndexViewModel
+@{
+    ViewBag.Title = "Gérer";
+}
+
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title.</h2>
+
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div>
+        <h4>Modifier vos paramètres de compte</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>Mot de passe :</dt>
+            <dd>
+                [
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("Changer votre mot de passe", "ChangePassword")
+                }
+                else
+                {
+                    @Html.ActionLink("Créer", "SetPassword")
+                }
+                ]
+            </dd>
+        </dl>
+    </div>
+</main>
