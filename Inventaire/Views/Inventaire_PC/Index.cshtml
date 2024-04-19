@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Ajouter une référence", "Create")
 </p>
 @using (Html.BeginForm("Index", "Inventaire_PC", FormMethod.Get))
 {
@@ -16,10 +16,12 @@
         Fabriquant: @Html.DropDownList("Fab", "All")
         OS: @Html.DropDownList("OS", "All")
         Carte Graphique: @Html.DropDownList("Carte_Graphique", "All")
+        <br />
         Taille: @Html.DropDownList("Taille", "All")
         Stockage: @Html.DropDownList("Stockage", "All")
         Type écran: @Html.DropDownList("Type_écran", "All")
         RAM: @Html.DropDownList("RAM", "All")
+        <br />
         Connectique: @Html.DropDownList("Connectique", "All")
         Référence: @Html.TextBox("SearchString")
         <input type="submit" value="Filter" />
