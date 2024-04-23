@@ -9,100 +9,176 @@
 <p>
     @Html.ActionLink("Ajouter une référence", "Create")
 </p>
-@using (Html.BeginForm("Index", "Inventaire_téléphone", FormMethod.Get))
-{
-    <p>
-        Processeur: @Html.DropDownList("Processeur", "All")
-        Fabriquant: @Html.DropDownList("Fab", "All")
-        Taille: @Html.DropDownList("Taille", "All")
-        Stockage: @Html.DropDownList("Stockage", "All")
-        Type écran: @Html.DropDownList("Type_écran", "All")
-        RAM: @Html.DropDownList("RAM", "All")
-        Connectique: @Html.DropDownList("Connectique", "All")
-        Référence: @Html.TextBox("SearchString")
-        <input type="submit" value="Filter" />
-    </p>
-}
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Référence)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fabriquant)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Processeur)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Taille)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stockage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type_écran)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RAM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Connectique)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prix)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantité)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Localisation)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Référence)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fabriquant)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Processeur)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Taille)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stockage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type_écran)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RAM)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Connectique)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prix)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantité)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Localisation)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+<style>
+    .filter-container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     }
 
-</table>
+    .filter-label {
+        display: inline-block;
+        width: 150px;
+        font-weight: bold;
+        margin-right: 20px;
+    }
+
+    .filter-options {
+        display: inline-block;
+        width: 200px;
+    }
+
+    .filter-label, .filter-options {
+        vertical-align: top;
+    }
+
+    .filter-container p {
+        margin-bottom: 20px;
+    }
+
+    .filter-container input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .filter-container input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+    .filter-container select, .filter-container input[type="text"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0px 0px 2px rgba(0,0,0,0.1);
+        width: 100%;
+    }
+
+        .filter-container select:focus, .filter-container input[type="text"]:focus {
+            border-color: #aaa;
+            box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+        }
+</style>
+@using (Html.BeginForm("Index", "Inventaire_téléphone", FormMethod.Get))
+{
+    <div class="filter-container">
+        <p>
+            <div class="filter-label"><Label for="Processeur">Processeur : </Label></div>
+            <div class="filter-options">@Html.DropDownList("Processeur", "All")</div>
+         
+            <div class="filter-label"><Label for="Fab">Fabriquant : </Label></div>
+            <div class="filter-options">@Html.DropDownList("Fab", "All")</div>
+           
+            <div class="filter-label"><Label for="Taille">Taille : </Label></div>
+            <div class="filter-options"> @Html.DropDownList("Taille", "All")</div>
+           
+            <div class="filter-label"><Label for="Stockage">Stockage : </Label></div>
+            <div class="filter-options">@Html.DropDownList("Stockage", "All")</div>
+            
+            <div class="filter-label"><Label for="Type_écran">Type écran : </Label></div>
+            <div class="filter-options"> @Html.DropDownList("Type_écran", "All")</div>
+            
+            <div class="filter-label"><Label for="RAM">RAM : </Label></div>
+            <div class="filter-options">@Html.DropDownList("RAM", "All")</div>
+             
+            <div class="filter-label"><Label for="Connectique">Connectique : </Label></div>
+            <div class="filter-options"> @Html.DropDownList("Connectique", "All")</div>
+            
+            <div class="filter-label"><Label for="SearchString">Référence : </Label></div>
+            <div class="filter-options"> @Html.TextBox("SearchString")</div>
+            <br />
+            <input type="submit" value="Filter"/>
+        </p>
+    </div>
+        }
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Référence)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fabriquant)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Processeur)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Taille)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stockage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type_écran)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RAM)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Connectique)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prix)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantité)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Localisation)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Référence)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fabriquant)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Processeur)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Taille)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stockage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type_écran)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RAM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Connectique)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prix)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantité)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Localisation)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>

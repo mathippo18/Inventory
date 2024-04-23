@@ -9,23 +9,102 @@
 <p>
     @Html.ActionLink("Ajouter une référence", "Create")
 </p>
+<style>
+    fieldset {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    legend {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 5px;
+    }
+
+    label {
+        display: inline-block;
+        width: 150px;
+        margin-right: 5px;
+        text-align: right;
+    }
+
+    select, input[type="text"] {
+        width: 100%;
+        padding: 2px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+    }
+
+    input[type="submit"] {
+        padding: 5px 10px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+</style>
 @using (Html.BeginForm("Index", "Inventaire_PC", FormMethod.Get))
 {
-    <p>
-        Processeur: @Html.DropDownList("Processeur", "All")
-        Fabriquant: @Html.DropDownList("Fab", "All")
-        OS: @Html.DropDownList("OS", "All")
-        Carte Graphique: @Html.DropDownList("Carte_Graphique", "All")
-        <br />
-        Taille: @Html.DropDownList("Taille", "All")
-        Stockage: @Html.DropDownList("Stockage", "All")
-        Type écran: @Html.DropDownList("Type_écran", "All")
-        RAM: @Html.DropDownList("RAM", "All")
-        <br />
-        Connectique: @Html.DropDownList("Connectique", "All")
-        Référence: @Html.TextBox("SearchString")
-        <input type="submit" value="Filter" />
-    </p>
+    <form>
+        <fieldset>
+            <legend>Filtrer les résultats</legend>
+            <div class="form-group">
+                <label for="Processeur">Processeur:</label>
+                @Html.DropDownList("Processeur", "All")
+            </div>
+            <div class="form-group">
+                <label for="Fab">Fabriquant:</label>
+                @Html.DropDownList("Fab", "All")
+            </div>
+            <div class="form-group">
+                <label for="OS">OS:</label>
+                @Html.DropDownList("OS", "All")
+            </div>
+            <div class="form-group">
+                <label for="Carte_Graphique">Carte Graphique:</label>
+                @Html.DropDownList("Carte_Graphique", "All")
+            </div>
+            <div class="form-group">
+                <label for="Taille">Taille:</label>
+                @Html.DropDownList("Taille", "All")
+            </div>
+            <div class="form-group">
+                <label for="Stockage">Stockage:</label>
+                @Html.DropDownList("Stockage", "All")
+            </div>
+            <div class="form-group">
+                <label for="Type_écran">Type écran:</label>
+                @Html.DropDownList("Type_écran", "All")
+            </div>
+            <div class="form-group">
+                <label for="RAM">RAM:</label>
+                @Html.DropDownList("RAM", "All")
+            </div>
+            <div class="form-group">
+                <label for="Connectique">Connectique:</label>
+                @Html.DropDownList("Connectique", "All")
+            </div>
+            <div class="form-group">
+                <label for="SearchString">Référence:</label>
+                @Html.TextBox("SearchString")
+            </div>
+            <input type="submit" value="Filtrer" class="btn" />
+        </fieldset>
+    </form>
 }
 <table class="table">
     <tr>
